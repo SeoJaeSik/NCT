@@ -13,7 +13,6 @@ public interface MemberRepository extends JpaRepository<Member, Long>, MemberRep
 
     Optional<Member> findById(Long id);
 
-
 //    에러처리 예시
 //    Member member = memberRepository.findByRefreshToken(token)
 //            .orElseThrow(() -> new MemberException(ErrorCode.INVALID_TOKEN));

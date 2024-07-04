@@ -1,8 +1,11 @@
 package io.nexgrid.bizcoretemplate.domain.member.service;
 
 import io.nexgrid.bizcoretemplate.domain.member.Member;
+import io.nexgrid.bizcoretemplate.domain.member.dto.LoginDto;
 import io.nexgrid.bizcoretemplate.domain.member.dto.SignUpDto;
 import io.nexgrid.bizcoretemplate.domain.member.repository.MemberRepository;
+import jakarta.servlet.http.HttpSession;
+import jdk.jshell.spi.ExecutionControl.UserException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,14 +26,9 @@ public class MemberService {
 
     public void signUpProcess(SignUpDto signUpDto) {
 
-        signUpDto.setPassWord(bCryptPasswordEncoder.encode(signUpDto.getPassWord()));
+        signUpDto.setPassword(bCryptPasswordEncoder.encode(signUpDto.getPassword()));
         Member member = memberRepository.save(signUpDto.signUpEntity());
         log.info("### SignUp Success : {} ", member.toString());
-    }
-
-    public List<Member> selectList() {
-
-        return memberRepository.findAll();
     }
 
     public Member getUserById(Long id) {

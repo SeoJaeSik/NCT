@@ -13,10 +13,10 @@ import lombok.Data;
 public class SignUpDto {
 
     @NotBlank @Size(max = 20, message = "USER ID는 20글자 이하입니다.")
-    private String userName; // 유저아이디
+    private String username; // 유저아이디
 
     @NotBlank
-    private String passWord; // 비밀번호
+    private String password; // 비밀번호
 
     @NotBlank @Pattern(regexp = "^[가-힣]{2,5}$")
     private String name; // 성명
@@ -32,8 +32,8 @@ public class SignUpDto {
 
     public Member signUpEntity() {
         return Member.builder()
-                .username(userName)
-                .password(passWord)
+                .username(username)
+                .password(password)
                 .name(name)
                 .birth(birth)
                 // Enum 값 검증시 Enum 에 선언되어있지 않은 필드로 요청시 IllegalArgumentException 발생 - 정규표현식으로 하드코딩으로 적용(enum값 변경시 변경요함)

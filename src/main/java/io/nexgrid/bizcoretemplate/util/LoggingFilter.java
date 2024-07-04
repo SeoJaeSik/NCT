@@ -36,7 +36,7 @@ public class LoggingFilter extends OncePerRequestFilter {
         } else {
             doFilterWrapped(new RequestWrapper(request), new ContentCachingResponseWrapper(response), filterChain);
         }
-        MDC.clear();
+        MDC.remove("seqId");
     }
 
     protected void doFilterWrapped(RequestWrapper request, ContentCachingResponseWrapper response, FilterChain filterChain) throws IOException, ServletException {
